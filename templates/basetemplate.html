@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static',filename='style.css') }}" asp-append-version="true">
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css'  rel='stylesheet'>
+    <title>
+        {% block title %}
+        {% endblock %}
+    </title>
+</head>
+<body>
+    <div class="grid-container">
+        <header class="header">
+            <div class="header__avatar">
+
+
+            </div>
+          </header>
+          <aside class="sidenav">
+              <div class="sidenav__logo">
+                <i class="bx bxl-c-plus-plus"></i>
+                <span class="sidenav__logo_name">Hi Everyone</span>
+              </div>
+              <ul class="sidenav__list">
+                  <li class="sidenav__list-item {{ 'active' if activePage == 'startPage' }}">
+                      <a href="customers">
+                        <i class='bx bxs-group'></i>
+                          list of customers</a>
+                       <a href="/"></a>
+                          
+                  </li>
+                  {{ current_user.email }}  
+
+                  {% if current_user.is_authenticated %}
+                  <li class="sidenav__list-item {{ 'active' if activePage == 'secretPage' }}">
+                    <a href="/logout">
+                        <i class="bx bx-list-ul"></i>
+                        Logout</a>
+                  </li>
+                  {% endif %}
+
+              </ul>
+          </aside>        
+    
+    <main class="main">
+        {% block content %}
+        {% endblock %}
+    </main>
+    <footer class="footer">
+        {% block footer %}
+            <div class="footer__copyright">&copy;Ranim</div>
+            <div class="footer__signature">All The love</div>
+        {% endblock %}
+    </footer>      
+</div>
+
+
+</body>
+</html>

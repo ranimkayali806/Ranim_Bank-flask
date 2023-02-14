@@ -1,0 +1,36 @@
+
+{% extends "basetemplate.html" %}
+{% block title %}
+customerpage {{ customer.Surname }}, {{ customer.GivenName }}
+{% endblock %}
+
+{% block content %}
+
+<h1> {{ customer.Surname }}, {{ customer.GivenName }}</h1>
+<p>City: {{ customer.City }}</p>
+</br>
+<p>Telephon:  {{customer.Telephone}}</p>
+</br>
+<p>TelefonCode: {{ customer.TelephoneCountryCode }} -  {{ customer.Telephone }}</p>
+</br>
+<p>Streetaddress: {{ customer.Streetaddress }}</p>
+</br>
+<p>NationalId: {{ customer.NationalId }}</p>
+</br>
+<p>EmailAddress: {{ customer.EmailAddress}}</p>
+</br>
+<p>Accounts: {{ customer.Accounts}}</p>
+</br>
+{% for account in customer.Accounts %}
+  <a href="/account/{{customer.Id}}">{{ account.Id }}</a>
+{% endfor %}
+
+
+
+    <!-- <a href="/account/{{customer.Id}}" class="btn"> Accounts </a>
+       <i class='bx bx-wallet-alt'></i>  -->
+
+
+{% endblock %}
+
+

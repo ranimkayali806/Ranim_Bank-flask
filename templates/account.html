@@ -1,0 +1,30 @@
+{% extends "basetemplate.html" %}
+{% block title %}
+Accounts 
+{% endblock %}
+
+{% block content %}
+<p>AccountId: {{ account.Id }}</p>
+</br>
+<p>AccountType: {{ account.AccountType }}</p>
+</br>
+<p>Balance:{{ account.Balance }}</p>
+</br>
+{% for account in customer.Accounts %}
+ <p><b>Transactions: {{ transactions.Id }}</b></p>
+</br>
+{% endfor %}
+ 
+      <!-- <ul >
+        <li>
+            <ul>{{ account.Transactions}}</ul>
+        </li>
+    </ul>   -->
+      <!-- <a href="/account?sortColumn=transactions&sortOrder=desc&q={{ q }}">
+         <i class='bx bx-down-arrow-alt'></i>
+      </a>
+
+ -->
+
+{% endblock %}
+

@@ -1,0 +1,16 @@
+{% extends "basetemplate.html" %}
+{% block title %}
+deposite belopp
+{% endblock %}
+
+{% block content %}
+    {% for field, errors in formen.errors.items() %}
+    {{ formen[field].label }}: {{ ', '.join(errors) }}
+    </br>
+    {% endfor %}
+
+    <form method="post">
+        {{ formen.csrf_token }}
+        {{ formen.amount_2(placeholder = 'Enter amount')}}
+
+{% endblock %}

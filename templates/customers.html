@@ -1,0 +1,100 @@
+
+
+
+
+
+{% extends "basetemplate.html" %}
+{% block title %}
+All Customers
+{% endblock %}
+
+{% block content %}
+
+<form method ="get">
+    <input type="text" placeholder="sök" name="q" value="{{ q }}">
+    <input class="btn" type="submt" value="sök">
+</form>
+
+Du är på sidan {{ page }} av totalt {{ pages }}
+<table class="table">
+    <thead>
+        <th>GivenName
+            <a href="/customers?sortColumn=givenname&sortOrder=asc&q={{ q }}">
+                <i class='bx bx-up-arrow-alt'></i>
+            </a>
+            <a href="/customers?sortColumn=givenname&sortOrder=desc&q={{ q }}">
+                <i class='bx bx-down-arrow-alt'></i>
+            </a>
+        </th>
+        <th>
+            Surname
+            <a href="/customers?sortColumn=surname&sortOrder=asc&q={{ q }}">
+                <i class='bx bx-up-arrow-alt'></i>
+            </a>
+            <a href="/customers?sortColumn=surname&sortOrder=desc&q={{ q }}">
+                <i class='bx bx-down-arrow-alt'></i>
+            </a> 
+        </th>
+        <th>
+            City
+            <a href="/customers?sortColumn=city&sortOrder=asc&q={{ q }}">
+                <i class='bx bx-up-arrow-alt'></i>
+            </a>
+            <a href="/customers?sortColumn=city&sortOrder=desc&q={{ q }}">
+                <i class='bx bx-down-arrow-alt'></i>
+            </a>
+        </th>
+        <th>
+            NationalId
+        </th>
+        
+    </thead>
+    <tbody>
+      
+        
+        {%  for c in customers  %}
+        <tr>
+            <td>
+                {{ c.GivenName }}
+            </td>
+            
+            <td> 
+                {{ c.Surname }}
+            </td>
+            
+            <td>
+                {{ c.City }}
+            </td>
+            <td>
+                {{ c.NationalId }}
+            </td>
+                
+            
+            <td>
+                <a href="/customer/{{ c.Id }}"  class="btn">More Info</a>
+                     <!-- <img src="https://img.systementor.se/{{ c.Id }}/300/200" />  -->
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody> 
+
+    <tfooter>
+       <tr>
+         <td>
+            {% if has_prev %}
+            <a class="btn" href="/customers?page={{ page - 1 }}&sortColumn={{ sortColumn }}&sortOrder={{ sortOrder }}&q={{ q }}">Prev</a>
+            {% endif %}
+        </td>
+        <td></td>
+        <td>
+            {% if has_next %}
+            <a class="btn" href="/customers?page={{ page + 1 }}&sortColumn={{ sortColumn }}&sortOrder={{ sortOrder }}&q={{ q }}">Next</a>
+            {% endif %}
+        </td>
+       
+       </tr>
+    </tfooter>
+</table> 
+{% endblock %}
+
+
