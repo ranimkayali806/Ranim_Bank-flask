@@ -12,7 +12,8 @@ All Customers
 
 <form method ="get">
     <input type="text" placeholder="sök" name="q" value="{{ q }}">
-    <input class="btn" type="submt" value="sök">
+    <!-- <input class="btn" type="submt" value="sök"> -->
+    <button class="customer">sök</button>
 </form>
 
 Du är på sidan {{ page }} av totalt {{ pages }}
@@ -47,6 +48,9 @@ Du är på sidan {{ page }} av totalt {{ pages }}
         <th>
             NationalId
         </th>
+        <th>
+            Accounts
+        </th>
         
     </thead>
     <tbody>
@@ -68,12 +72,18 @@ Du är på sidan {{ page }} av totalt {{ pages }}
             <td>
                 {{ c.NationalId }}
             </td>
+            <td>
+                {{ c.Accounts }}
+            </td>
+            
+                
                 
             
             <td>
                 <a href="/customer/{{ c.Id }}"  class="btn">More Info</a>
-                     <!-- <img src="https://img.systementor.se/{{ c.Id }}/300/200" />  -->
+                      <img src="https://img.systementor.se/{{ c.Id }}/300/200" />  
             </td>
+           
         </tr>
         {% endfor %}
     </tbody> 

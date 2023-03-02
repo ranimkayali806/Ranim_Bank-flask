@@ -1,6 +1,6 @@
 {% extends "basetemplate.html" %}
 {% block title %}
-deposite belopp
+Deposite Amount
 {% endblock %}
 
 {% block content %}
@@ -8,9 +8,13 @@ deposite belopp
     {{ formen[field].label }}: {{ ', '.join(errors) }}
     </br>
     {% endfor %}
+    <h1>Add Money To This Account </h1>
 
     <form method="post">
         {{ formen.csrf_token }}
-        {{ formen.amount_2(placeholder = 'Enter amount')}}
+         {{ formen.amount(placeholder = 'Enter amount')}}
+    <input type="submit" value="Save">
+    </form>
+
 
 {% endblock %}

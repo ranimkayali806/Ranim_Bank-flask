@@ -4,27 +4,54 @@ Accounts
 {% endblock %}
 
 {% block content %}
-<p>AccountId: {{ account.Id }}</p>
+
+  
+
+<p><b>AccountId:</b> {{ account.Id }}</p>
 </br>
-<p>AccountType: {{ account.AccountType }}</p>
+<p><b>AccountType:</b> {{ account.AccountType }}</p>
 </br>
-<p>Balance:{{ account.Balance }}</p>
+<p><b>Balance:</b> {{ account.Balance }}</p>
 </br>
-{% for account in customer.Accounts %}
- <p><b>Transactions: {{ transactions.Id }}</b></p>
-</br>
-{% endfor %}
+<p><b>Transactions:</b></p>
+<br>
+<table class border = "1">
+
+  <thead>
+    <th>ID:</th>
+    <th>Type:</th>
+    <th>Date:</th>
+    <th>Amount:</th>
+    <th>NewBalance:</th>
+    <th>AccountId:</th>
+  </thead>
+
+
+  <tbody>
+    
+    {% for t in account.Transactions %}
+
+      <tr>
+        <td>{{ t.Id }}</td>
+        <td>{{ t.Type }}</td>
+        <td>{{ t.Date }}</td>
+        <td>{{ t.Amount }}</td>
+        <td>{{ t.NewBalance }}</td>
+        <td>{{ t.AccountId }}</td>
+      </tr>
+    
+    {% endfor %}
+  </tbody>
+</table> 
+
+
  
-      <!-- <ul >
-        <li>
-            <ul>{{ account.Transactions}}</ul>
-        </li>
-    </ul>   -->
-      <!-- <a href="/account?sortColumn=transactions&sortOrder=desc&q={{ q }}">
-         <i class='bx bx-down-arrow-alt'></i>
-      </a>
-
- -->
-
 {% endblock %}
+ 
+
+
+
+
+
+
 

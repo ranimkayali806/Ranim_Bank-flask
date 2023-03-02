@@ -10,15 +10,15 @@ from flask_security.models import fsqla_v3 as fsqla
 
 db = SQLAlchemy()
 
-fsqla.FsModels.set_db_info(db)
+# fsqla.FsModels.set_db_info(db)
 
-class Role(db.Model, fsqla.FsRoleMixin):
-    pass
+# class Role(db.Model, fsqla.FsRoleMixin):
+#     pass
 
-class User(db.Model, fsqla.FsUserMixin):
-    pass
+# class User(db.Model, fsqla.FsUserMixin):
+#     pass
 
-user_datastore = SQLAlchemyUserDatastore(db, User, Role)
+# user_datastore = SQLAlchemyUserDatastore(db, User, Role)
 
 
 class Customer(db.Model):
@@ -38,6 +38,7 @@ class Customer(db.Model):
     EmailAddress = db.Column(db.String(50), unique=False, nullable=False)
     Accounts = db.relationship('Account', backref='Customer',
      lazy=True)
+    Amount =  db.Column(db.Integer, unique=False, nullable=False)
 class Account(db.Model):
     __tablename__= "Accounts"
     Id = db.Column(db.Integer, primary_key=True)
@@ -57,8 +58,10 @@ class Transaction(db.Model):
     Amount = db.Column(db.Integer, unique=False, nullable=False)
     NewBalance = db.Column(db.Integer, unique=False, nullable=False)
     AccountId = db.Column(db.Integer, db.ForeignKey('Accounts.Id'), nullable=False)
+
+
 def seedData(app,db):
-      app.security = Security(app, user_datastore)
+      #app.security = Security(app, user_datastore)
       app.security.datastore.db.create_all()
       if not app.security.datastore.find_role("Admin"):
         app.security.datastore.create_role(name="Admin")
@@ -80,6 +83,7 @@ def seedData(app,db):
         customer.Zipcode, customer.City, _  = barnum.create_city_state_zip()
         customer.Country = "USA"
         customer.CountryCode = "US"
+        customer.Amount = 0
         customer.Birthday = barnum.create_birthday()
         n = barnum.create_cc_number()
         customer.NationalId = customer.Birthday.strftime("%Y%m%d-") + n[1][0][0:4]

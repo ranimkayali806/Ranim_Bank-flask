@@ -7,23 +7,28 @@ customerpage {{ customer.Surname }}, {{ customer.GivenName }}
 {% block content %}
 
 <h1> {{ customer.Surname }}, {{ customer.GivenName }}</h1>
-<p>City: {{ customer.City }}</p>
 </br>
-<p>Telephon:  {{customer.Telephone}}</p>
-</br>
-<p>TelefonCode: {{ customer.TelephoneCountryCode }} -  {{ customer.Telephone }}</p>
-</br>
-<p>Streetaddress: {{ customer.Streetaddress }}</p>
-</br>
-<p>NationalId: {{ customer.NationalId }}</p>
-</br>
-<p>EmailAddress: {{ customer.EmailAddress}}</p>
-</br>
-<p>Accounts: {{ customer.Accounts}}</p>
-</br>
-{% for account in customer.Accounts %}
-  <a href="/account/{{customer.Id}}">{{ account.Id }}</a>
-{% endfor %}
+<p><b>City:</b> {{ customer.City }}</p>
+ </br>
+<p><b>Telephon:</b>  {{customer.Telephone}}</p>
+ </br>
+<p><b>TelephonCode:</b> {{ customer.TelephoneCountryCode }} -  {{ customer.Telephone }}</p>
+ </br>
+<p><b>Streetaddress:</b> {{ customer.Streetaddress }}</p>
+ </br>
+<p><b>NationalId:</b> {{ customer.NationalId }}</p>
+ </br>
+<p><b>EmailAddress:</b> {{ customer.EmailAddress}}</p>
+ </br>
+
+ {% for a in customer.Accounts %}
+  <a href="/account/{{a.Id}}">Accounts:{{ a.Id }}</a>
+  
+    <a href="/deposite/{{ a.Id }}" class="btn">Deposite</a>
+    <a href="/withdraw/{{ a.Id }}" class="btn">Withdraw</a>
+    <a href="/transactions/{{ a.Id }}" class="btn">Transfer</a>
+    
+ {% endfor %}
 
 
 

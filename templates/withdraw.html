@@ -1,6 +1,6 @@
 {% extends "basetemplate.html" %}
 {% block title %}
-withdraw belopp
+Withdraw Amount
 {% endblock %}
 
 {% block content %}
@@ -8,9 +8,13 @@ withdraw belopp
     {{ formen[field].label }}: {{ ', '.join(errors) }}
     </br>
     {% endfor %}
+    <h1>Ta ut från {{ customer.GivenName }}</h1>
+   
 
     <form method="post">
         {{ formen.csrf_token }}
-        {{ formen.amount(placeholder = 'Enter amount')}}
+          {{ formen.amount(placeholder = 'Enter amount')}}
+    <input type="submit" value="Save">
+    </form>
 
 {% endblock %}

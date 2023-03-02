@@ -1,12 +1,12 @@
 {% extends "basetemplate.html" %}
 
 {% block title %}
-Customer: {{ customer.Name }}
+Customer: {{ customer.GivenName }}
 {% endblock %}
 
 
 {% block content %}
-<h1>{{ customer.Name }}</h1>
+<h1>{{ customer.GivenName }}</h1>
 <p>
 <img src="https://img.systementor.se/{{ customer.Id }}/800/600" />
 </p>

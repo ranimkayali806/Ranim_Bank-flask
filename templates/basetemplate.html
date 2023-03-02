@@ -23,6 +23,8 @@
               <div class="sidenav__logo">
                 <i class="bx bxl-c-plus-plus"></i>
                 <span class="sidenav__logo_name">Hi Everyone</span>
+                
+                
               </div>
               <ul class="sidenav__list">
                   <li class="sidenav__list-item {{ 'active' if activePage == 'startPage' }}">
@@ -32,6 +34,9 @@
                        <a href="/"></a>
                           
                   </li>
+                  
+
+
                   {{ current_user.email }}  
 
                   {% if current_user.is_authenticated %}

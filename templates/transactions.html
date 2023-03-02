@@ -1,0 +1,24 @@
+{% extends "basetemplate.html" %}
+
+{% block title %}Transactions{% endblock %}
+
+{% block content %}
+    {% for field, errors in formen.errors.items() %}
+    {{ formen[field].label }}: {{ ', '.join(errors) }}
+    </br>
+    {% endfor %}
+    <form method="post">
+         {{ formen.csrf_token }}
+         {{ formen.account(placeholder = 'Enter AccountNumber')}}
+  
+   
+         {{ formen.account_2(placeholder = 'Enter AccountNumber')}}
+    
+  
+
+   
+        {{ formen.amount(placeholder = 'Enter Amount')}}
+    <input type="submit" value="Save"> 
+    </form>
+
+{% endblock %}
